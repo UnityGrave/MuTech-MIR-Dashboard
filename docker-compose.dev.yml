@@ -1,0 +1,40 @@
+# Docker Compose - Development Environment
+# Usage: docker-compose -f docker-compose.dev.yml up
+
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: pitch-visualizer-dev
+    
+    # Port mapping: host:container
+    ports:
+      - "5173:5173"
+    
+    # Volume mounts for hot reloading
+    volumes:
+      # Mount source code for live updates
+      - .:/app
+      # Anonymous volume for node_modules (prevents host override)
+      - /app/node_modules
+    
+    # Environment variables
+    environment:
+      - NODE_ENV=development
+      - VITE_HMR_HOST=localhost
+      - CHOKIDAR_USEPOLLING=true
+    
+    # Keep container running and allow interaction
+    stdin_open: true
+    tty: true
+    
+    # Restart policy for development
+    restart: unless-stopped
+
+# Named volumes (optional, for persistence)
+volumes:
+  node_modules:
+

@@ -12,11 +12,32 @@ A real-time pitch detection and visualization web application built with TypeScr
 
 ## Prerequisites
 
-- Node.js 18+ 
+- Node.js 18+ (or Docker)
 - npm 9+
 - A modern browser (Chrome 89+, Firefox 76+, Safari 14.5+)
 
 ## Getting Started
+
+### Option 1: Using Docker (Recommended)
+
+```bash
+# Clone the repository
+git clone https://github.com/your-username/MuTech-MIR-Dashboard.git
+cd MuTech-MIR-Dashboard
+
+# Development (with hot reload)
+docker compose -f docker-compose.dev.yml up
+
+# Production
+docker compose up -d
+```
+
+- **Development**: http://localhost:5173
+- **Production**: http://localhost:8080
+
+See [DOCKER.md](DOCKER.md) for detailed Docker documentation.
+
+### Option 2: Local Development
 
 1. **Clone the repository**
    ```bash
@@ -50,6 +71,25 @@ A real-time pitch detection and visualization web application built with TypeScr
 - `npm run preview` - Preview production build
 - `npm run lint` - Run ESLint
 - `npm run format` - Format code with Prettier
+
+## Docker Commands
+
+```bash
+# Development with hot reload
+docker compose -f docker-compose.dev.yml up
+
+# Production build and run
+docker compose up -d
+
+# Stop containers
+docker compose down
+
+# Rebuild after changes
+docker compose up --build -d
+
+# View logs
+docker compose logs -f
+```
 
 ## Technical Architecture
 
