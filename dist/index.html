@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pitch Visualizer | MuTech MIR Dashboard</title>
+    <script type="module" crossorigin src="/assets/index-CBFejuZx.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-Bx0WJjPb.css">
+  </head>
+  <body>
+    <div class="app-container">
+      <header class="header">
+        <h1 class="title">Pitch Visualizer</h1>
+        <div class="status-indicator" id="status">
+          <span class="status-dot"></span>
+          <span class="status-text">Ready</span>
+        </div>
+      </header>
+
+      <main class="main-content">
+        <!-- Pitch Display -->
+        <div class="pitch-display">
+          <div class="note-container">
+            <span class="note-name" id="note-name">---</span>
+            <span class="cents-display" id="cents-display">+0¢</span>
+          </div>
+          <div class="frequency-display" id="frequency-display">--- Hz</div>
+        </div>
+
+        <!-- Canvas Visualization -->
+        <div class="canvas-container">
+          <canvas id="pitch-canvas"></canvas>
+        </div>
+
+        <!-- Controls -->
+        <div class="controls">
+          <button class="btn btn-primary" id="start-btn">
+            <span class="btn-icon">▶</span>
+            Start
+          </button>
+          <button class="btn btn-secondary" id="test-btn" disabled>
+            <span class="btn-icon">♪</span>
+            Test Tone
+          </button>
+          <select class="test-frequency-select" id="test-frequency" disabled>
+            <option value="220">220 Hz (A3)</option>
+            <option value="440" selected>440 Hz (A4)</option>
+            <option value="880">880 Hz (A5)</option>
+          </select>
+        </div>
+
+        <!-- Debug Info -->
+        <div class="debug-panel" id="debug-panel">
+          <div class="debug-item">
+            <span class="debug-label">Sample Rate:</span>
+            <span class="debug-value" id="sample-rate">---</span>
+          </div>
+          <div class="debug-item">
+            <span class="debug-label">FPS:</span>
+            <span class="debug-value" id="fps-counter">---</span>
+          </div>
+          <div class="debug-item">
+            <span class="debug-label">Clarity:</span>
+            <span class="debug-value" id="clarity-display">---</span>
+          </div>
+        </div>
+      </main>
+    </div>
+
+  </body>
+</html>
+
