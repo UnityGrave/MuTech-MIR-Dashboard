@@ -1,0 +1,58 @@
+# Docker Compose - Production Environment
+# Usage: docker-compose up -d
+
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: pitch-visualizer-prod
+    image: pitch-visualizer:latest
+    
+    # Port mapping: host:container
+    ports:
+      - "8080:8080"
+    
+    # Environment variables
+    environment:
+      - NODE_ENV=production
+    
+    # Restart policy for production
+    restart: unless-stopped
+    
+    # Health check
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    
+    # Security options
+    security_opt:
+      - no-new-privileges:true
+    
+    # Resource limits (adjust based on your needs)
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 256M
+        reservations:
+          cpus: '0.1'
+          memory: 64M
+    
+    # Logging configuration
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+# Network configuration (optional, for multi-container setups)
+networks:
+  default:
+    name: pitch-visualizer-network
+

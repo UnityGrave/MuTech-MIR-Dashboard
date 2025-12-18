@@ -1,0 +1,14 @@
+
+Real time pitch voice graph visualizer
+
+Lets say I want to make a simple app like this website
+
+https://www.pitchreader.com/
+
+Where I recognize the pitch in real time
+
+I want a web app that can detect the notes you play and draw them on a graph in real time.
+
+That is the minimum viable product
+
+How would I be able to do it? What are the tech stack
